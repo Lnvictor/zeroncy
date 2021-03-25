@@ -4,6 +4,7 @@ Controller for reading .env content files
 
 from abc import ABC, abstractmethod, abstractproperty
 import os
+import json
 
 
 class AbstractEnvironmentFileReader(ABC):
@@ -42,11 +43,11 @@ class DotEnvFileReader(AbstractEnvironmentFileReader):
         return self._file_type
 
     @file_type.setter
-    def file_type(self, attr) -> None:
+    def file_type(self, attr: str) -> None:
         self._file_type = attr
     
     def read_file(self) -> dict:
-        lines = open(os.getcwd() + "/.env").readlines()
+        lines = open(os.getcwd() + "/.env", encoding="utf-8").readlines()
         return  {
             x[0]: x[1].strip('\n') for x in [v.split("=") for v in lines]
         }
@@ -54,8 +55,19 @@ class DotEnvFileReader(AbstractEnvironmentFileReader):
         
 class JsonFileReader(AbstractEnvironmentFileReader):
     """
-    Still Not Implemented
-
-    >--- TODO
+    reads a .env.json file
     """
-    pass
+    def __init__(self, f_type: str):
+        self.file_type = f_type
+
+    
+    @property
+    def file_type(self) -> str:
+        return self.file_type
+
+    @file_type.setter
+    def file_type(self, attr: str) -> None:
+        self._file_type = attr
+
+    def read_file(self) -> dict:
+        return json.loads(open(os.getcwd() + "/.env.json", encoding="utf-8").read())

@@ -12,28 +12,23 @@ ______   _____   _____   _____  _      _  _____ __     __
 """
 
 from .exceptions import FileExtensionDoesNotCovered, VariableDoesNotExists
-from .controller import DotEnvFileReader
+from .controllers import DotEnvFileReader, JsonFileReader
 
 
-FILE_TYPES_AVALIABLE = [None, ]
+FILE_TYPES_AVALIABLE = {None: DotEnvFileReader, dict: JsonFileReader}
 FILE_USED_IN_PROJECT = None
 
-# If new configuration file type was added,
-# Remember to update this code to make
-# these types avaliable
-
-single_controller = DotEnvFileReader(None)
 ENV = dict()
 
 def config(file_type: str=None):
     if not file_type in FILE_TYPES_AVALIABLE:
         raise FileExtensionDoesNotCovered()
-    global ENV 
+    single_controller = FILE_TYPES_AVALIABLE.get(file_type)(None)
+    global ENV
     ENV = single_controller.read_file()
 
 
 def get(var_name: str, cast=None) -> any:
-    # global ENV
     try:
         if cast is not None:
             var = cast(ENV[var_name]) 
