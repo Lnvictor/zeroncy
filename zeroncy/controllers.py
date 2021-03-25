@@ -1,5 +1,8 @@
 """
-Controller for reading .env content files
+Controller classes to read the content
+of configuration file.
+
+The type file can be choosed between .env or .env.json file
 """
 
 from abc import ABC, abstractmethod, abstractproperty
@@ -34,9 +37,6 @@ class DotEnvFileReader(AbstractEnvironmentFileReader):
     """
     Reads a .env file
     """
-
-    def __init__(self, f_type):
-        self.file_type = f_type
     
     @property
     def file_type(self) -> str:
@@ -57,9 +57,6 @@ class JsonFileReader(AbstractEnvironmentFileReader):
     """
     reads a .env.json file
     """
-    def __init__(self, f_type: str):
-        self.file_type = f_type
-
     
     @property
     def file_type(self) -> str:

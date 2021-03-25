@@ -15,15 +15,14 @@ from .exceptions import FileExtensionDoesNotCovered, VariableDoesNotExists
 from .controllers import DotEnvFileReader, JsonFileReader
 
 
-FILE_TYPES_AVALIABLE = {None: DotEnvFileReader, dict: JsonFileReader}
-FILE_USED_IN_PROJECT = None
+FILE_TYPES_AVALIABLE = {None: DotEnvFileReader, dict: JsonFileReader}x
 
 ENV = dict()
 
 def config(file_type: str=None):
-    if not file_type in FILE_TYPES_AVALIABLE:
+    if not file_type in FILE_TYPES_AVALIABLE.keys():
         raise FileExtensionDoesNotCovered()
-    single_controller = FILE_TYPES_AVALIABLE.get(file_type)(None)
+    single_controller = FILE_TYPES_AVALIABLE.get(file_type)()
     global ENV
     ENV = single_controller.read_file()
 
