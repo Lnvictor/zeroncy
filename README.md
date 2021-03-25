@@ -30,12 +30,12 @@ pip install zeroncy
     >>> zeroncy.config()
     
     >>> zeroncy.get("HOST")
-    >>> "localhost"
+    "localhost"
 
     # If you want a diferent type you can pass the cast parameter
 
     >>> zeroncy.get("PORT", cast=int)
-    >>> 5000
+    5000
 
     ```
 
@@ -60,10 +60,10 @@ pip install zeroncy
     >>> zeroncy.config(dict) # passes dict as parameter
     
     >>> zeroncy.get("HOST")
-    >>> "localhost"
+    "localhost"
 
     >>> zeroncy.get("PORT")
-    >>> 5000
+    5000
 
     # Note that on Json config you don't need to passes cast parameter for other types (Integer in this example)
 
