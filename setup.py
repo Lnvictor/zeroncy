@@ -17,15 +17,12 @@ setup(name='zeroncy',
       platforms='any',
       include_package_data=True,
       classifiers=[
-          'Development Status :: 5 - Production/Stable',
-          'Framework :: Django',
-          'Framework :: Flask',
+          'Development Status :: 2 - Pre-Alpha',
           'Intended Audience :: Developers',
-          'License :: OSI Approved :: MIT License',
           'Natural Language :: English',
           'Operating System :: OS Independent',
           'Programming Language :: Python',
           'Programming Language :: Python :: 3',
           'Topic :: Software Development :: Libraries',
       ],
-      url='http://github.com/henriquebastos/python-decouple/',)
+      url='http://github.com/Lnvictor/zeroncy/',)
