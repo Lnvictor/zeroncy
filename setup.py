@@ -3,15 +3,12 @@ from setuptools import setup
 import os
 
 
-def read(fname):
-    return codecs.open(os.path.join(os.path.dirname(__file__), fname)).read()
-
 README = os.path.join(os.path.dirname(__file__), 'README.md')
 
 setup(name='zeroncy',
-      version='0.3',
+      version='0.1',
       description='Zero dependency lib for python',
-      long_description=read('README.md'),
+      long_description=open(README).read(),
       long_description_content_type='text/markdown',
       author="Victor Pereira", author_email="vh141299@gmail.com",
       license="GNU 3.0",
