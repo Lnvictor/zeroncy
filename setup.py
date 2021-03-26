@@ -3,6 +3,9 @@ from setuptools import setup
 import os
 
 
+def read(fname):
+    return codecs.open(os.path.join(os.path.dirname(__file__), fname)).read()
+
 README = os.path.join(os.path.dirname(__file__), 'README.md')
 
 setup(name='zeroncy',
