@@ -15,7 +15,7 @@ from .exceptions import FileExtensionDoesNotCovered, VariableDoesNotExists
 from .controllers import DotEnvFileReader, JsonFileReader
 
 
-FILE_TYPES_AVALIABLE = {None: DotEnvFileReader, dict: JsonFileReader}x
+FILE_TYPES_AVALIABLE = {None: DotEnvFileReader, dict: JsonFileReader}
 
 ENV = dict()
 

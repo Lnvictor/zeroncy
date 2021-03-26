@@ -4,6 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+wheel = "*"
+twine = "*"
 
 [dev-packages]
 ipdb = "*"
