@@ -6,7 +6,7 @@ import os
 README = os.path.join(os.path.dirname(__file__), 'README.md')
 
 setup(name='zeroncy',
-      version='1.0',
+      version='0.1',
       description='Zero dependency lib for python',
       long_description=open(README).read(),
       author="Victor Pereira", author_email="vh141299@gmail.com",
