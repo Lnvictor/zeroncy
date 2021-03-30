@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 wheel = "*"
 twine = "*"
+pytest = "*"
+black = "*"
 
 [dev-packages]
 ipdb = "*"

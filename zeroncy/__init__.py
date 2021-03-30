@@ -11,11 +11,13 @@ ______   _____   _____   _____  _      _  _____ __     __
  A simple zero-dependency python library...
 """
 
+from collections import OrderedDict
+
 from .exceptions import FileExtensionDoesNotCovered, VariableDoesNotExists
 from .controllers import DotEnvFileReader, JsonFileReader
 
 FILE_TYPES_AVALIABLE = {None: DotEnvFileReader, dict: JsonFileReader}
-ENV = dict()
+ENV = OrderedDict()
 
 
 def config(file_type: str = None) -> None:
@@ -34,7 +36,7 @@ def config(file_type: str = None) -> None:
         raise FileExtensionDoesNotCovered()
     single_controller = FILE_TYPES_AVALIABLE.get(file_type)()
     global ENV
-    ENV = single_controller.read_file()
+    ENV = OrderedDict(single_controller.read_file())
 
 
 def get(var_name: str, cast: any = None, many: bool = False) -> any:
@@ -51,11 +53,15 @@ def get(var_name: str, cast: any = None, many: bool = False) -> any:
 
     try:
         if cast is not None:
-            var = cast(ENV[var_name])
+            var = cast(ENV.get(var_name))
             if cast == bool:
                 var = not var
         else:
-            var = ENV[var_name].replace(" ", "").split(",") if many else ENV[var_name]
+            var = (
+                ENV.get(var_name).replace(" ", "").split(",")
+                if many
+                else ENV.get(var_name)
+            )
         return var
     except KeyError:
         raise VariableDoesNotExists()
