@@ -17,8 +17,9 @@ pip install zeroncy
 - create a .env file in project root and set variables...
 
     ```yml
-  
-    HOST=localhost
+    
+    DATABASE_URL=postgres://user:pwd@localhost:5432/psql
+    ALLOWED_HOSTS=localhost, 127.0.0.0.1
     PORT=5000
   
     ```
@@ -31,13 +32,18 @@ pip install zeroncy
     
     >>> zeroncy.config()
     
-    >>> zeroncy.get("HOST")
-    "localhost"
+    >>> zeroncy.get("DATABASE_URL")
+    'postgres://user:pwd@localhost:5432/psql'
 
     # If you want a diferent type you can pass the cast parameter
 
     >>> zeroncy.get("PORT", cast=int)
     5000
+
+    # If your var has more than one value, you must set the many parameter to true...
+
+    >>> zeroncy.get("ALLOWED_HOSTS", many=True)
+    ['localhost', '127.0.0.0.1']
 
     ```
 
@@ -47,7 +53,8 @@ pip install zeroncy
     ```json
 
     {
-        "HOST": "localhost",
+        "DATABASE_URL": "postgres://user:pwd@localhost:5432/psql",
+        "ALLOWED_HOSTS": "localhost, 127.0.0.0.1",
         "PORT": 5000
     }
 
@@ -61,11 +68,14 @@ pip install zeroncy
     
     >>> zeroncy.config(dict) # passes dict as parameter
     
-    >>> zeroncy.get("HOST")
-    "localhost"
+    >>> zeroncy.get("DATABASE_URL")
+    'postgres://user:pwd@localhost:5432/psql'
 
     >>> zeroncy.get("PORT")
     5000
+
+    >>> zeroncy.get("ALLOWED_HOSTS", many=True)
+    ['localhost', '127.0.0.0.1']
 
     # Note that on Json config you don't need to passes cast parameter for other types (Integer in this example)
 
