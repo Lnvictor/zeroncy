@@ -36,7 +36,7 @@ def config(file_type: str = None) -> None:
         raise FileExtensionDoesNotCovered()
     single_controller = FILE_TYPES_AVALIABLE.get(file_type)()
     global ENV
-    ENV = OrderedDict(single_controller.read_file())
+    ENV.update(single_controller.read_file())
 
 
 def get(var_name: str, cast: any = None, many: bool = False) -> any:
