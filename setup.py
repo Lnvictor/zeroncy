@@ -100,7 +100,7 @@ DESCRIPTION = 'Zero dependency lib for python'
 AUTHOR = "Victor Pereira"
 AUTHOR_EMAIL = "vh141299@gmail.com"
 URL = "https://github.com/Lnvictor/zeroncy"
-VERSION = '0.5'
+VERSION = '1.0'
 
 
 README = os.path.join(os.path.dirname(__file__), 'README.md')
@@ -118,7 +118,7 @@ setup(
     packages=find_packages(exclude=["tests.*", "tests"]),
     package_data=find_package_data(PACKAGE, only_in_packages=False),
     classifiers=[
-          'Development Status :: 2 - Pre-Alpha',
+          'Development Status :: 5 - Production/Stable',
           'Intended Audience :: Developers',
           'Natural Language :: English',
           'Operating System :: OS Independent',
