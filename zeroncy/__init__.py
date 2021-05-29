@@ -36,7 +36,12 @@ def config(file_type: str = None) -> None:
         raise FileExtensionDoesNotCovered()
     single_controller = FILE_TYPES_AVALIABLE.get(file_type)()
     global ENV
-    ENV.update(single_controller.read_file())
+    raw_data = single_controller.read_file()
+
+    # Cleaning commented lines
+    for key, value in raw_data.items():
+        if not key.startswith("#"):
+            ENV.update({key: value})
 
 
 def get(var_name: str, cast: any = None, many: bool = False) -> any:
@@ -53,14 +58,14 @@ def get(var_name: str, cast: any = None, many: bool = False) -> any:
 
     try:
         if cast is not None:
-            var = cast(ENV.get(var_name))
+            var = cast(ENV[var_name])
             if cast == bool:
                 var = not var
         else:
             var = (
-                ENV.get(var_name).replace(" ", "").split(",")
+                ENV[var_name].replace(" ", "").split(",")
                 if many
-                else ENV.get(var_name)
+                else ENV[var_name]
             )
         return var
     except KeyError:
