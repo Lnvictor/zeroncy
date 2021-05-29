@@ -5,6 +5,7 @@ A simple python tool to make your projet more decoupled.
 Just put your project variables on a config file instead store in encironment variable. You can use a .env for json file...
 
 [![PyPI version](https://badge.fury.io/py/zeroncy.svg)](https://badge.fury.io/py/zeroncy)
+![Coverage](./cov-badge.svg)
 
 ## Installing
 
