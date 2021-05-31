@@ -6,6 +6,7 @@ Just put your project variables on a config file instead store in encironment va
 
 [![PyPI version](https://badge.fury.io/py/zeroncy.svg)](https://badge.fury.io/py/zeroncy)
 ![Coverage](./cov-badge.svg)
+[![Python application](https://github.com/Lnvictor/zeroncy/actions/workflows/python-app.yml/badge.svg)](https://github.com/Lnvictor/zeroncy/actions/workflows/python-app.yml)
 
 ## Installing
 
