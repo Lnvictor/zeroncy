@@ -4,9 +4,10 @@ from typing import List
 import os
 
 from .common import write_data
+from .. import VariableDoesNotExists, FILE_TYPES_AVALIABLE, JsonFileReader
 import zeroncy
 
-DATA = {"DEBUG": "False", "NAME": "Victor", "ALLOWED_HOSTS": "localhost, 127.0.0.0.1"}
+DATA = {"DEBUG": "False", "NAME": "Victor", "ALLOWED_HOSTS": "localhost, 127.0.0.0.1", "#FOO": "FOO"}
 
 
 @pytest.fixture
@@ -26,3 +27,6 @@ def test_env_vars_value(prepare_dot_env_file):
     assert not zeroncy.get("DEBUG", cast=bool)
     assert zeroncy.get("NAME") == "Victor"
     assert isinstance(zeroncy.get("ALLOWED_HOSTS", many=True), list)
+
+    with pytest.raises(VariableDoesNotExists):
+        assert zeroncy.get("#FOO")
