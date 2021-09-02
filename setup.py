@@ -100,7 +100,7 @@ DESCRIPTION = 'Zero dependency lib for python'
 AUTHOR = "Victor Pereira"
 AUTHOR_EMAIL = "vh141299@gmail.com"
 URL = "https://github.com/Lnvictor/zeroncy"
-VERSION = '1.0.1'
+VERSION = '1.0.2'
 
 
 README = os.path.join(os.path.dirname(__file__), 'README.md')
