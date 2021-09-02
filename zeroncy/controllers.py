@@ -48,7 +48,9 @@ class DotEnvFileReader(AbstractEnvironmentFileReader):
 
     def read_file(self) -> dict:
         lines = open(os.getcwd() + "/.env", encoding="utf-8").readlines()
-        return {x[0]: x[1].strip("\n") for x in [v.split("=") for v in lines]}
+        dotenv_vars = {x[0]: x[1].strip("\n") for x in [v.split("=") for v in lines]}
+        dotenv_vars.update(os.environ)
+        return dotenv_vars
 
 
 class JsonFileReader(AbstractEnvironmentFileReader):
@@ -65,4 +67,6 @@ class JsonFileReader(AbstractEnvironmentFileReader):
         self._file_type = attr
 
     def read_file(self) -> dict:
-        return json.loads(open(os.getcwd() + "/.env.json", encoding="utf-8").read())
+        dotenv_vars = json.loads(open(os.getcwd() + "/.env.json", encoding="utf-8").read())
+        dotenv_vars.update(os.environ)
+        return dotenv_vars

@@ -26,6 +26,7 @@ def test_env_vars_value(prepare_dot_env_file):
     """
     assert not zeroncy.get("DEBUG", cast=bool)
     assert zeroncy.get("NAME") == "Victor"
+    assert zeroncy.get("PATH") == os.environ["PATH"]
     assert isinstance(zeroncy.get("ALLOWED_HOSTS", many=True), list)
 
     with pytest.raises(VariableDoesNotExists):
